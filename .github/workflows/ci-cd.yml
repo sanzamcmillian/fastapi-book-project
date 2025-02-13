@@ -28,9 +28,9 @@ jobs:
 
       - name: Set up Git identity
         run: |
-          git config --global g18s2628@ru.ac.za "github-actions@github.com"
-          git config --global sanzamcmillian "github-actions"
-        
+          git config --global user.email "g18s2628@ru.ac.za"
+          git config --global user.name "sanzamcmillian"
+
       - name: Merge PR into main
         run: |
           git fetch origin main
