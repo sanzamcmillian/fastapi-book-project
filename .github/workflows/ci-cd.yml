@@ -25,7 +25,12 @@ jobs:
         run: |
           pip install --upgrade pip
           pip install -r requirements.txt
-      
+
+      - name: Set up Git identity
+        run: |
+          git config --global g18s2628@ru.ac.za "github-actions@github.com"
+          git config --global sanzamcmillian "github-actions"
+        
       - name: Merge PR into main
         run: |
           git fetch origin main
