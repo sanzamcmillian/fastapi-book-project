@@ -10,12 +10,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout and merge PR
+      - name: Checkout
         uses: actions/checkout@v3
-        with:
-          ref: ${{ github.event.pull_request.head.ref }}
-          fetch-depth: 0
-    
+        
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -26,17 +23,6 @@ jobs:
           pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Set up Git identity
-        run: |
-          git config --global user.email "g18s2628@ru.ac.za"
-          git config --global user.name "sanzamcmillian"
-
-      - name: Merge PR into main
-        run: |
-          git fetch origin main
-          git checkout main
-          git merge --no-ff ${{ github.event.pull_request.head.ref }}     
-        
       - name: Run Tests
         run: pytest
 
